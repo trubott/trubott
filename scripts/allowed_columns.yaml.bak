@@ -1,0 +1,96 @@
+# Allowlist of every database column trustcard is permitted to store.
+#
+# Pull requests that add a column not listed here will fail the
+# `verify-no-pii` CI check. To add a column you must also:
+#   1. Add the column to src/db/schema.ts
+#   2. Add the column here, with a `purpose` and `retention`.
+#   3. Update PRIVACY.md.
+#   4. Update the README if a user-facing field changes.
+#
+# This file is parsed by scripts/verify-no-pii.mjs.
+
+users:
+  - id
+  - google_sub
+  - email
+  - display_name
+  - avatar_url
+  - created_at
+  - last_seen_at
+
+connected_accounts:
+  - id
+  - user_id
+  - platform
+  - handle
+  - profile_url
+  - profile_pic_url
+  - bio
+  - full_name
+  - account_created_at
+  - link_karma
+  - comment_karma
+  - has_verified_email
+  - is_premium
+  - top_subreddits
+  - comment_count
+  - submission_count
+  - raw_json
+  - ownership_verified_at
+  - scraped_at
+
+verification_codes:
+  - id
+  - user_id
+  - platform
+  - code
+  - created_at
+  - expires_at
+  - consumed_at
+  - consumed_from_handle
+
+consumed_messages:
+  - platform
+  - message_id
+  - consumed_at
+
+face_checks:
+  - id
+  - user_id
+  - passed_at
+  - method
+  - ip_country
+
+passive_sessions:
+  - id
+  - user_id
+  - fp_hash
+  - first_seen
+  - last_seen
+  - session_count
+
+cards:
+  - id
+  - user_id
+  - payload
+  - created_at
+  - expires_at
+  - burn_after_read
+  - viewed_count
+  - revoked_at
+
+card_otps:
+  - code
+  - card_id
+  - expires_at
+
+claim_evals:
+  - id
+  - card_id
+  - claim_field
+  - claim_value
+  - label
+  - reason
+  - evidence_excerpt
+  - llm_model
+  - created_at
